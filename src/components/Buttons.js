@@ -2,6 +2,7 @@ import styled,{css} from "styled-components"
 export const ButtonMain=styled.button`
 cursor: pointer;
 border: none;
+width: max-content;
 border-radius: 10px;
 font-family: inherit;
 font-size: 14px;

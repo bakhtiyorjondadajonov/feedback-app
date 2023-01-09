@@ -1,12 +1,16 @@
-
+import {Routes,Route} from "react-router-dom"
 import classes from './App.module.css';
-import MainParts from './components/main-parts/MainParts';
-import SideBar from './components/side-bar/SideBar';
 
+import CreateFeedBack from "./Routes/CreateFeedBack";
+import EditFeedback from "./Routes/EditFeedback";
+import Home from './Routes/Home';
 function App() {
   return <div className={classes.container}>
-<SideBar/>
-<MainParts/>
+<Routes>
+  <Route path="/" element={<Home/>}/>
+  <Route path="/new-feedback" element={<CreateFeedBack/>} />
+  <Route path="/edit-feedback" element={<EditFeedback/>} />
+</Routes>
   </div>
 }
 

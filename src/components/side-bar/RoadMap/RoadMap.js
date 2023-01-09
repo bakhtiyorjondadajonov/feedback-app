@@ -14,7 +14,7 @@ function RoadMap() {
         </div>
       <Status color="orange" title="Planned" count="3"/>
       <Status color="purple" title="Live" count="5"/>
-      <Status color="red" title="In-Progress" count="8"/>
+      <Status color="light-blue" title="In-Progress" count="8"/>
     </RoadMapStyle>
   )
 }
