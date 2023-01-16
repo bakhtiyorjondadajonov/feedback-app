@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { ButtonMain } from '../Buttons'
 
@@ -32,7 +33,7 @@ span{
     font-weight:700;
 }
 }
-button{
+a{
     margin-left: auto;
 }
 
@@ -55,7 +56,8 @@ function Navigation() {
             <svg style={{marginLeft:"0.5rem"}} width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4 4-4" stroke="CurrentColor" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
             </span>
         </div>
-        <ButtonMain purple>+ Add Feedback</ButtonMain>
+        <Link to='sign-in'><ButtonMain blue>Sign In</ButtonMain></Link>
+        <Link to="new-feedback"><ButtonMain purple>+ Add Feedback</ButtonMain></Link>
     </NavigationStyle>
   )
 }

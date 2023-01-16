@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ButtonMain } from '../../Buttons'
 import EmptyContainer from './EmptyStyle'
 
@@ -10,7 +11,7 @@ function Empty() {
       <h3 className="title">There is no feedback yet.</h3>
       <p className="description">Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.</p>
       </div>
-        <ButtonMain purple>+ Add Feedback</ButtonMain>
+        <Link to='new-feedback'><ButtonMain purple>+ Add Feedback</ButtonMain></Link>
     </EmptyContainer>
   )
 }
