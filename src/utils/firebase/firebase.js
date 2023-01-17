@@ -1,7 +1,11 @@
 // Import the functions you need from the SDKs you need
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import { initializeApp } from "firebase/app";
-import {GoogleAuthProvider,getAuth,signInWithPopup} from "firebase/auth"
+import {GoogleAuthProvider,getAuth,signInWithPopup,createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth"
 import {getFirestore,doc,getDoc,setDoc} from "firebase/firestore"
+// Alert pop up / sweet library
+export const MySwal = withReactContent(Swal)
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCgXxbuWInIcynw3iZ_Th_uYVGdJyQjcKo",
@@ -27,7 +31,7 @@ export const signInWithGooglePopup=()=>signInWithPopup(auth,provider)
 const db = getFirestore()
 // we need to create a user with the information passed through 
 //authentication process
-export const createUserDocumentFromAuth=async(userAuth)=>{
+export const createUserDocumentFromAuth=async(userAuth,additionalInfo)=>{
 
 const userDocRef= doc(db,"users",userAuth.uid)
 
@@ -37,11 +41,35 @@ if(!userSnapShot.exists()){
     await setDoc(userDocRef,{
         email:userAuth.email,
         name:userAuth.displayName,
-        createAt:Date.now()
+        createAt:Date.now(),
+        ...additionalInfo
     })
    } catch (error) {
     console.log(error)
    }
 }
+MySwal.fire(
+  "",
+  'You are logged in!',
+  "success"
+)
 return userDocRef
+}
+
+
+export const createAuthUserWithEmailAndPassword=async(email,password)=>{
+ return await createUserWithEmailAndPassword(auth,email,password)
+}
+export const signInAuthUserWithEmailAndPassword=async(email,password)=>{
+const response=await signInWithEmailAndPassword(auth,email,password)
+if(response.operationType==="signIn"){
+  console.log(response)
+  await MySwal.fire(
+    "",
+    'You are logged in!',
+    "success"
+  )
+  // window.location="/"
+}
+return response
 }

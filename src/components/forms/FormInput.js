@@ -17,7 +17,7 @@ border-radius:5px;
 `
 function FormInput(props) {
   return (
-  <Input type={props.type?props.type:"text"}/>
+  <Input {...props} type={props.type?props.type:"text"}/>
   )
 }
 
