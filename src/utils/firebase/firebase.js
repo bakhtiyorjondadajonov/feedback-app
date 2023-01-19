@@ -2,7 +2,8 @@
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { initializeApp } from "firebase/app";
-import {GoogleAuthProvider,getAuth,signInWithPopup,createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth"
+import {onAuthStateChanged,GoogleAuthProvider,getAuth,signInWithPopup,createUserWithEmailAndPassword} from "firebase/auth"
+import {signInWithEmailAndPassword,signOut} from "firebase/auth"
 import {getFirestore,doc,getDoc,setDoc} from "firebase/firestore"
 // Alert pop up / sweet library
 export const MySwal = withReactContent(Swal)
@@ -72,4 +73,13 @@ if(response.operationType==="signIn"){
   // window.location="/"
 }
 return response
+}
+
+export const signOutFnHandler=async()=>{
+  await signOut(auth)
+}
+export const AuthStateChangeHandler=(observer)=>{
+
+  onAuthStateChanged(auth,observer)
+
 }
