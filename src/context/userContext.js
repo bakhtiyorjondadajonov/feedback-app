@@ -1,8 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import { AuthStateChangeHandler } from "../utils/firebase/firebase";
-
-
-
 export const UserContext=createContext({
     currentUser:null,
     setCurrentUser:()=>null

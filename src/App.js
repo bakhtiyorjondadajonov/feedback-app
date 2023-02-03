@@ -5,6 +5,7 @@ import { UserContext } from "./context/userContext";
 
 import CreateFeedBack from "./Routes/CreateFeedBack";
 import EditFeedback from "./Routes/EditFeedback";
+import FeedBackDetails from "./Routes/FeedBackDetails";
 import Home from './Routes/Home';
 import SignIn from "./Routes/SignIn";
 import SignUp from "./Routes/SignUp";
@@ -15,6 +16,7 @@ function App() {
   <Route path='/sign-in' element={<SignIn/>}/>
   <Route path="/sign-up" element={<SignUp/>}/>
   <Route path="/" element={<Home/>}/>
+  <Route path="/feedback-details/:id" element={<FeedBackDetails/>}/>
   <Route path="/new-feedback" element={<CreateFeedBack/>} />
   <Route path="/edit-feedback" element={<EditFeedback/>} />
 </Routes>

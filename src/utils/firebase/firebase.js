@@ -43,6 +43,7 @@ if(!userSnapShot.exists()){
         email:userAuth.email,
         name:userAuth.displayName,
         createAt:Date.now(),
+        
         ...additionalInfo
     })
    } catch (error) {
