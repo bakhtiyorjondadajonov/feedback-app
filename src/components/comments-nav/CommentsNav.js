@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ButtonMain } from '../Buttons';
 import {ReactComponent as ArrowLeft} from "./icon-arrow-left.svg"
 import { CommentsNavStyle } from './CommentsNav.style'
 import { Link } from 'react-router-dom';
+import { ProductRequestContext } from '../../context/productRequestsContext';
 
 function CommentsNav() {
+
   return (
     <CommentsNavStyle>
       <Link to="/">
       <ButtonMain transparent><ArrowLeft/><span>  Go Back</span></ButtonMain>
       </Link>
-      <Link to="/edit-feedback">
+      <Link to={`/edit-feedback`}>
       <ButtonMain  blue>Edit feedback</ButtonMain>
       </Link>
     </CommentsNavStyle>

@@ -33,6 +33,13 @@ if(props.blue){
     background-color:transparent;
     color :var(--color-primary) ;
     `
+}else if(props.red){
+    return css`
+    
+    background-color:var(--red);
+    color :var(--color-secondary) ;
+    
+    `
 }
 }};
 /* background-color: var(--blue); */
