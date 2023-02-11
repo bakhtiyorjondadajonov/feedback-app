@@ -5,3 +5,14 @@
   grid-template-columns: min-content min-content;
   gap:3rem ;
 }
+@media (max-width:1200px) {
+.container{
+  margin:2rem auto;
+  grid-template-columns: 1fr;
+}
+}
+@media (max-width:900px) {
+.container{
+ gap: 0;
+}
+}

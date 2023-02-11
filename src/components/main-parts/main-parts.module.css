@@ -5,3 +5,10 @@ display: flex;
 flex-direction: column;
 gap: 2.4rem;
 }
+.main_parts_v2{
+/* Temporary style */
+width:90rem ;
+display: flex;
+flex-direction: column;
+gap: 2.4rem;
+}

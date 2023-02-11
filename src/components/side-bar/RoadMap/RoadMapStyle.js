@@ -13,6 +13,9 @@ background-color: var(--color-secondary);
     margin-bottom: 1.5rem;
 & a{
     padding:0;
+    &>button{
+        padding: 0 !important;
+    }
    &:hover{
     text-decoration: underline;
    }

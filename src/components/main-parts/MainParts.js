@@ -12,7 +12,7 @@ function MainParts() {
 
   return (
     <div className={classes.main_parts}>
-     <Navigation/>
+     <Navigation logo sort suggestions/>
      {filteredProductRequests.length===0?<Empty/>:filteredProductRequests.map(productRequest=>{
 return (<ProductRequestCard productRequest={productRequest} key={productRequest.id}/>)
 

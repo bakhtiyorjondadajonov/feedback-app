@@ -1,6 +1,19 @@
 .side_bar{
-   
    display: flex;
    flex-direction: column;
    gap:2.4rem ;
 }
+.card_wrapper{
+
+}
+@media (max-width:1200px) {
+   .side_bar{
+      flex-direction: row;
+      height: auto;
+   }
+   }
+@media (max-width:900px) {
+   .card_wrapper{
+      display: none;
+   }
+   }

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const SideBarCard=styled.div`
 border-radius: 10px;
 width: 255px;

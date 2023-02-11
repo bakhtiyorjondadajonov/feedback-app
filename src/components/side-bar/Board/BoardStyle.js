@@ -30,4 +30,10 @@ letter-spacing: 0px;
 text-align: left;
  opacity: 0.7;
 }
+@media (max-width:900px) {
+  border-radius  :0 !important;
+  width: 100%;
+  min-height:auto !important ;
+ 
+}
 `

@@ -17,9 +17,9 @@ await signOutFnHandler()
   return (
     <div className={classes.side_bar}>
       <Board/>
-      <Filter/>
-      <RoadMap/>
-     { currentUser? <ButtonMain onClick={logOutFn} style={{width:"100%",textAlign:"center",textTransform:"uppercase"}} gray type="button">Log Out</ButtonMain>:""}
+      <div className={classes.card_wrapper}><Filter/></div>
+      <div className={classes.card_wrapper}> <RoadMap/></div>
+     { currentUser? <div className={classes.card_wrapper}><ButtonMain onClick={logOutFn} style={{width:"100%",textAlign:"center",textTransform:"uppercase"}} gray type="button">Log Out</ButtonMain></div>:""}
   
     </div>
   )

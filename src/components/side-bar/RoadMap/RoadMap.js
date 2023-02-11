@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { ButtonMain } from '../../Buttons'
 import { RoadMapStyle } from './RoadMapStyle'
 import Status from './Status'
@@ -10,7 +11,7 @@ function RoadMap() {
             <h2 className="title">
                 RoadMap
             </h2>
-            <ButtonMain as="a" transparent>View</ButtonMain>
+            <Link to="roadmap"><ButtonMain href="roadmap"  transparent>View</ButtonMain></Link>
         </div>
       <Status color="orange" title="Planned" count="3"/>
       <Status color="purple" title="Live" count="5"/>
