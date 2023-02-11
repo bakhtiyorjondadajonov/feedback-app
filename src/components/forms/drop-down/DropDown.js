@@ -1,7 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
+import {ReactComponent as ICON_CHECK} from  "./icon-check.svg"
+import styled, { css } from 'styled-components'
 // Drop down style
 const DropDownStyle=styled.div`
+cursor: pointer;
 width: 100%;
 background-color:var(--color-secondary--dark);
 padding: 1.3rem 2.4rem;
@@ -15,6 +17,19 @@ border-radius:5px;
 display: flex;
 justify-content: space-between;
 position: relative;
+${(props)=>{
+    if(props.gray){
+        return css`
+        background-color: var(--color-primary--dark);
+        color: white;
+        font-weight:700;
+
+        .drop-down-menu{
+            color:black;
+        }
+        `
+    }
+}}
 .arrow{
     width: 2rem;
     height: 2rem;
@@ -52,6 +67,7 @@ display: none;
         color: var(--purple);
     }
     & .icon-check{
+        width:2rem;
         height: 100%;
         display: flex;
         position: relative;
@@ -76,10 +92,11 @@ display: none;
 // Drop down functuality
 function DropDown(props) {
     const dropDownHandler=(e)=>{
-e.target.querySelector(".arrow-down")?.classList.toggle("rotate");
+e.target.closest(".drop-down").querySelector(".arrow-down")?.classList.toggle("rotate");
 document.querySelector(".drop-down-menu").classList.toggle("active")
 const optionBtn=e.target.closest(".option");
 if(!optionBtn) return
+document.querySelector(".arrow-down").classList.toggle("rotate"); 
 // Check icon apperance handled
 const optionsArr=optionBtn.parentElement.querySelectorAll(".option")
 optionsArr.forEach(option=>{
@@ -90,16 +107,16 @@ optionBtn.querySelector(".icon-check").classList.add("active")
 // ----MAIN ACTIONS HANDLER -----
 document.querySelector(".selected").textContent=optionBtn.textContent
 
-props.dataReceiver(optionBtn.textContent)
 document.querySelector(".arrow-down").classList.toggle("rotate");  
 document.querySelector(".drop-down-menu").classList.remove("active")
+props.dataReceiver(optionBtn.textContent)
 
 }
    
   return (
-    <DropDownStyle onClick={dropDownHandler}>
+    <DropDownStyle className='drop-down' gray={props.gray} onClick={dropDownHandler}>
       <div className="selected" >
-      Choose Category
+      {props.options[0]}
       </div>
       <div className="arrow">
       <svg className="arrow-down" width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4 4-4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
@@ -108,7 +125,7 @@ document.querySelector(".drop-down-menu").classList.remove("active")
 
 <div className="drop-down-menu">
     {props.options.map(option=>{
-        return (<div className='option' >
+        return (<div key={Math.random()} className='option' >
             <span>{option}</span>
         <span className='icon-check'>
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="11"><path fill="none" stroke="#AD1FEA" stroke-width="2" d="M1 5.233L4.522 9 12 1"/></svg>

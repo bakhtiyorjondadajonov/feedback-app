@@ -1,5 +1,5 @@
 import React, { useContext, useReducer } from 'react'
-import {Link} from 'react-router-dom'
+import {Link,useNavigate} from 'react-router-dom'
 import { ButtonMain } from '../components/Buttons'
 import DropDown from '../components/forms/drop-down/DropDown'
 import { Form } from '../components/forms/Form'
@@ -37,6 +37,7 @@ const feedBackReducerFn=(state,action)=>{
       }
     }
 function EditFeedback() {
+  const navigatorFn=useNavigate()
     const {currentProductRequest,editProductRequestHandler}=useContext(ProductRequestContext);
    
     const [state,dispatch]=useReducer(feedBackReducerFn,currentProductRequest)
@@ -65,7 +66,15 @@ function EditFeedback() {
       const formHandler=(e)=>{
         e.preventDefault()
         console.log("state",state);
-        editProductRequestHandler(state)
+        editProductRequestHandler(state);
+        // navigatorFn("/")
+MySwal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Your feedback has been updated',
+  showConfirmButton: false,
+  timer: 2000
+})
 
             }
 

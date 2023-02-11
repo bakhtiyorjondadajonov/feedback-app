@@ -1,6 +1,6 @@
 
 import classes from "./main-parts.module.css"
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navigation from "./Navigation"
 
 import ProductRequestCard from "./productRequests/ProductRequests"
@@ -8,12 +8,12 @@ import Empty from "./Empty-content/Empty"
 import { ProductRequestContext } from "../../context/productRequestsContext"
 
 function MainParts() {
-  const {productRequests}=useContext(ProductRequestContext)
- 
+  const {filteredProductRequests}=useContext(ProductRequestContext)
+
   return (
     <div className={classes.main_parts}>
      <Navigation/>
-     {productRequests.length===0?<Empty/>:productRequests.map(productRequest=>{
+     {filteredProductRequests.length===0?<Empty/>:filteredProductRequests.map(productRequest=>{
 return (<ProductRequestCard productRequest={productRequest} key={productRequest.id}/>)
 
      })}
