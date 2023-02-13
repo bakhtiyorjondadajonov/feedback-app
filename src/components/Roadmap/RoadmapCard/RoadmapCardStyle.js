@@ -10,7 +10,14 @@ overflow: hidden;
     left: 0;
     height: 5px;
     width: 100%;
-    background-color:orange;
+    background-color:${
+    ((props)=>{
+if(props.status==="live") return "var(--light-blue)"
+if(props.status==="in-progress") return "var(--purple)"
+if(props.status==="planned") return "var(--orange)"
+
+    })
+    };
     position: absolute; 
 }
 .btn-upvotes{
@@ -39,6 +46,7 @@ display: flex;
 justify-content:space-between;
 `
 export const Status=styled.div`
+text-transform:capitalize;
 font-size: 16px;
 font-weight: 400;
 line-height: 23px;
@@ -52,7 +60,12 @@ position: absolute;
 width: 1rem;
 height:1rem;
 border-radius: 50%;
-background-color:yellow;
+background-color:${((props)=>{
+if(props.status==="live") return "var(--light-blue)"
+if(props.status==="in-progress") return "var(--purple)"
+if(props.status==="planned") return "var(--orange)"
+
+    })};
 top:50%;
 transform:translateY(-50%);
 
@@ -66,7 +79,7 @@ left:-1.5rem;
 
 `
 export const Title=styled.div`
-
+text-transform:capitalize;
 font-size: 16px;
 font-weight: 700;
 line-height: 26px;

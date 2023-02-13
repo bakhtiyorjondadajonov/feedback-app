@@ -10,8 +10,9 @@ import { ProductRequestContext } from '../context/productRequestsContext';
 function FeedBackDetails() {
     const {id:productId}=useParams();
     
-    const {productRequests,setCurrentProductRequst}=useContext(ProductRequestContext);
-    const [productRequest]=productRequests.filter(productRequest=>productRequest.id==productId)
+    const {productRequests,currentProductRequest,setCurrentProductRequst}=useContext(ProductRequestContext);
+    const [productRequest]=productRequests.filter(productRequest=>productRequest.id==productId);
+
 useEffect(()=>{
 
   setCurrentProductRequst(productRequest)
@@ -20,11 +21,12 @@ useEffect(()=>{
   return (
     <div style={{display:"flex",flexDirection:"column",gap:"2rem",width:"82.5rem"}}>
     <CommentsNav/>
-      <ProductRequestCard productRequest={productRequest}/>
+      {
+        currentProductRequest && <ProductRequestCard productRequest={currentProductRequest}/>
+      }
       <CommentsContainer>
         {
-            productRequest.comments.map(comment=>{
-
+           currentProductRequest&&currentProductRequest.comments?.map(comment=>{
                 return (
                     <CommentsBox key={`${Math.random()}`}  comment={comment}/>
                 )

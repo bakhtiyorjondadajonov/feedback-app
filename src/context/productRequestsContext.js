@@ -41,7 +41,7 @@ setProductRequests(productRequests.filter(productRequest=>productRequest.id===cu
 
     const addCommentHandler=(newComment)=>{
        
-  const updatedCommentArr=[...currentProductRequest.comments,newComment]
+  const updatedCommentArr=currentProductRequest.comments?[...currentProductRequest.comments,newComment]:[newComment]
   updateCommentsAndReplies(currentProductRequest.id,updatedCommentArr)
 setProductRequests((prev)=>{
     const newArr=prev.map(productReq=>{
