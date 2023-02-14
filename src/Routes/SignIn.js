@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ButtonMain } from '../components/Buttons'
 import FormInput from '../components/forms/FormInput'
 import FormLabel from '../components/forms/FormLabel'
@@ -7,6 +7,7 @@ import { createUserDocumentFromAuth, MySwal, signInAuthUserWithEmailAndPassword,
 import Auth from './AuthStyle'
 
 function SignIn() {
+  const navigator=useNavigate()
   const initialFormData={
     
     email:"",
@@ -26,7 +27,8 @@ const formSubmitHandler=async(e)=>{
 e.preventDefault()
 
 try {
-  await signInAuthUserWithEmailAndPassword(email,password)
+  await signInAuthUserWithEmailAndPassword(email,password);
+  navigator("/")
 } catch (error) {
   MySwal.fire({
     icon: 'error',
@@ -52,6 +54,7 @@ setFormData(initialFormData)
     const logGoogleUser=async ()=>{
         const {user}=await signInWithGooglePopup()
         createUserDocumentFromAuth(user)
+        navigator("/")
           }
   return (
     <Auth onSubmit={formSubmitHandler}>

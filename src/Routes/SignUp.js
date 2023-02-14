@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ButtonMain } from '../components/Buttons'
 import FormInput from '../components/forms/FormInput'
 import FormLabel from '../components/forms/FormLabel'
@@ -7,6 +7,7 @@ import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth, MySwal 
 import AuthForm from './AuthStyle'
 
 function SignUp() {
+  const navigatior=useNavigate()
     const initialFormData={
         name:"",
         email:"",
@@ -20,15 +21,21 @@ function SignUp() {
         setFormData((prev)=>{
             return {...prev,[name]:value}
         })
-        console.log(formData)
+      
     }
     const formSubmitHandler=async(e)=>{
 e.preventDefault()
-if(password!==confirmPassword) return alert("password and passwordConfirm are not the same")
+if(password!==confirmPassword) return MySwal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: '"Password and Password Confirm are not the same"!'
+})
 
 try {
     const {user}=await createAuthUserWithEmailAndPassword(formData.email,formData.password)
 createUserDocumentFromAuth(user,{name})
+navigatior("/")
+
 } catch (error) {
     MySwal.fire({
         icon: 'error',
@@ -41,7 +48,7 @@ setFormData(initialFormData)
 
 }
   return (
-    <AuthForm onSubmi t={formSubmitHandler}>
+    <AuthForm onSubmit={formSubmitHandler}>
       <h1>Sign Up</h1>
       <div>
         <FormLabel htmlFor='name'>
