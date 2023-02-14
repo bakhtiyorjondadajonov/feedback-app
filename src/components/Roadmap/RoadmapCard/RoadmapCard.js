@@ -9,7 +9,9 @@ function RoadmapCard({productRequest}) {
      <Status status={productRequest.status}>
         {productRequest.status}
         </Status> 
+        <Link to={`/feedback-details/${productRequest.id}`}>
         <Title>{productRequest.title}</Title>
+        </Link>
         <Description>
         {productRequest.description}
         </Description>
