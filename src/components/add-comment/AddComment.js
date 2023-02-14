@@ -14,12 +14,12 @@ const content=textArea.value
 if(content.length===0)return alert("You should write something as a comment")
 
 const newComment={
-id:`${currentUser.displayName.split(" ")[0]}${Math.random()}`,
+id:currentUser.displayName?`${currentUser.displayName.split(" ")[0]}${Math.random()}`:currentUser.email.split("@")[0],
 content,
 user:{
-    image:"./avatar.svg",
-    name:currentUser.displayName,
-username:currentUser.displayName.split(" ")[0].toLowerCase()
+    image:`https://api.dicebear.com/5.x/adventurer-neutral/svg?seed=${currentUser.email.split("@")[0].toLowerCase()}`,
+    name:currentUser.displayName?currentUser.displayName:currentUser.email.split("@")[0],
+username:currentUser.email.split("@")[0].toLowerCase()
 },
 replies:[]
 

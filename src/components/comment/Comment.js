@@ -13,9 +13,9 @@ function Comment({comment,saveNewReply}) {
             content:replyContent,
             replyingTo:comment.user.username,
             user:{
-                image:"./avatar.svg",
-                name:currentUser.displayName,
-username:currentUser.displayName.split(" ")[0].toLowerCase()
+              image:`https://api.dicebear.com/5.x/adventurer-neutral/svg?seed=${currentUser.email.split("@")[0].toLowerCase()}`,
+                name:currentUser.displayName?currentUser.displayName:currentUser.email.split("@")[0],
+username:currentUser.email.split("@")[0].toLowerCase()
             }
         }
         saveNewReply(newReplyData)
@@ -28,7 +28,7 @@ setReplyCondition(!replyCondition)
   return (
     <CommentCard class="comment">
           <UserImage
-            src={`./../../..${comment.user.image.slice(1,)}`}
+            src={comment.user.image.includes("https")?comment.user.image:`./../../..${comment.user.image.slice(1,)}`}
             alt={comment.user.name}
           />
           <Name class="">{comment.user.name}</Name>
